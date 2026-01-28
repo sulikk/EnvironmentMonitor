@@ -25,12 +25,12 @@ Zgodnie z wymaganiami projektu, aplikacja wykorzystuje 3 źródła danych:
 * **Uprawnienia:** Pełna obsługa systemowych uprawnień Runtime (Camera, Location, Audio).
 
 ## 📸 Zrzuty ekranu
-> `![Dashboard](screenshots/dashboard.png)` | `![Historia](screenshots/history.png)`
+Znajdują się 
 
 ## 🚀 Instrukcja uruchomienia
-1. Sklonuj repozytorium: `git clone [URL_TWOJEGO_REPOZYTORIUM]`
+1. Sklonuj repozytorium.
 2. Otwórz projekt w **Android Studio (Ladybug lub nowsza)**.
-3. Uruchom aplikację na fizycznym urządzeniu lub emulatorze z obsługą usług Google Play.
+3. Uruchom aplikację na fizycznym urządzeniu lub emulatorze.
 4. Zaakceptuj wymagane uprawnienia przy pierwszym uruchomieniu, aby sensory mogły zbierać dane.
 
 ## 📦 Plik APK
