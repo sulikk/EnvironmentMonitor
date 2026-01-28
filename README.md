@@ -31,7 +31,7 @@ Zgodnie z wymaganiami projektu, aplikacja wykorzystuje 3 źródła danych:
 4. Zaakceptuj wymagane uprawnienia przy pierwszym uruchomieniu, aby sensory mogły zbierać dane.
 
 ## 📦 Plik APK
-Gotowy plik instalacyjny znajduje się w folderze `app/release/`.
+Gotowy plik instalacyjny znajduje się w folderze `release`.
 
 ## 📸 Zrzuty ekranu
 
