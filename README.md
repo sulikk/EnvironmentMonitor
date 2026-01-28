@@ -24,14 +24,6 @@ Zgodnie z wymaganiami projektu, aplikacja wykorzystuje 3 źródła danych:
 * **Baza danych:** Room Persistence Library
 * **Uprawnienia:** Pełna obsługa systemowych uprawnień Runtime (Camera, Location, Audio).
 
-## 📸 Zrzuty ekranu
-
-### Ekran główny (Dashboard)
-![Dashboard](screenshots/dashboard.png)
-
-### Historia pomiarów
-![Historia](screenshots/history.png)
-
 ## 🚀 Instrukcja uruchomienia
 1. Sklonuj repozytorium.
 2. Otwórz projekt w **Android Studio (Ladybug lub nowsza)**.
@@ -40,6 +32,14 @@ Zgodnie z wymaganiami projektu, aplikacja wykorzystuje 3 źródła danych:
 
 ## 📦 Plik APK
 Gotowy plik instalacyjny znajduje się w folderze `app/release/`.
+
+## 📸 Zrzuty ekranu
+
+### Ekran główny (Dashboard)
+![Dashboard](screenshots/dashboard.png)
+
+### Historia pomiarów
+![Historia](screenshots/history.png)
 
 ---
 *Projekt zrealizowany w ramach laboratorium: Programowanie urządzeń mobilnych.*
