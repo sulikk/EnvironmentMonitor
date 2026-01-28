@@ -37,7 +37,6 @@ fun DashboardScreen(
     val uiState by vm.uiState.collectAsState()
     val context = LocalContext.current
 
-    // --- 1. Obsługa Uprawnień Startowych (Lokalizacja + Mikrofon) ---
     val permissionsToRequest = arrayOf(
         Manifest.permission.ACCESS_FINE_LOCATION,
         Manifest.permission.ACCESS_COARSE_LOCATION,
@@ -47,18 +46,15 @@ fun DashboardScreen(
     val multiplePermissionsLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
     ) { permissions ->
-        // Sprawdzamy, czy kluczowe uprawnienia zostały przyznane
         val locationGranted = permissions[Manifest.permission.ACCESS_FINE_LOCATION] == true ||
                 permissions[Manifest.permission.ACCESS_COARSE_LOCATION] == true
         val audioGranted = permissions[Manifest.permission.RECORD_AUDIO] == true
 
         if (locationGranted && audioGranted) {
-            // Jeśli mamy zgody, startujemy sensory
             vm.startMonitoring()
         }
     }
 
-    // Uruchamiamy pytanie o uprawnienia RAZ przy starcie ekranu
     LaunchedEffect(Unit) {
         val allGranted = permissionsToRequest.all {
             ContextCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
@@ -70,12 +66,12 @@ fun DashboardScreen(
         }
     }
 
-    // Zatrzymujemy monitoring przy wyjściu z ekranu
+
     DisposableEffect(Unit) {
         onDispose { vm.stopMonitoring() }
     }
 
-    // --- 2. Obsługa Aparatu (Twoja stara logika, lekko poprawiona) ---
+
     val cameraLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.TakePicturePreview()
     ) { bitmap ->
@@ -88,7 +84,6 @@ fun DashboardScreen(
         }
     }
 
-    // Launcher dla samego aparatu (gdy klikamy przycisk)
     val cameraPermissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { isGranted ->
@@ -113,7 +108,6 @@ fun DashboardScreen(
         Spacer(Modifier.height(32.dp))
 
         Button(onClick = {
-            // Sprawdzamy uprawnienie tylko do Kamery (pozostałe powinny być już nadane na starcie)
             if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
                 cameraLauncher.launch(null)
             } else {
@@ -135,13 +129,11 @@ fun DashboardScreen(
 fun HistoryScreen(vm: EnvironmentViewModel = viewModel()) {
     val context = LocalContext.current
 
-    // Zmieniamy produceState, abyśmy mogli ręcznie modyfikować 'value' po usunięciu
     val measurementsState = produceState<List<Measurement>>(initialValue = emptyList()) {
         value = com.example.environmentmonitor.model.AppDatabase
             .getDatabase(vm.getApplication()).measurementDao().getAllMeasurements()
     }
 
-    // Wyciągamy listę do zmiennej pomocniczej dla czytelności
     val measurements = measurementsState.value
 
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
@@ -159,20 +151,15 @@ fun HistoryScreen(vm: EnvironmentViewModel = viewModel()) {
 
         LazyColumn(modifier = Modifier.fillMaxSize().padding(top = 16.dp)) {
             items(measurements) { item ->
-                // ZMIANA: Dodano parametr onClick do Card
                 Card(
                     onClick = {
-                        // Tworzymy URI zgodne ze standardem Androida dla map
-                        // geo:lat,lon?q=lat,lon(Label) - to pozwoli postawić pinezkę
                         val uri =
                             Uri.parse("geo:${item.latitude},${item.longitude}?q=${item.latitude},${item.longitude}(Pomiar)")
                         val intent = Intent(Intent.ACTION_VIEW, uri)
 
-                        // Próbujemy uruchomić aktywność (Mapy)
                         try {
                             context.startActivity(intent)
                         } catch (e: Exception) {
-                            // Opcjonalnie: obsługa błędu, np. brak aplikacji map
                             e.printStackTrace()
                         }
                     },
@@ -182,7 +169,6 @@ fun HistoryScreen(vm: EnvironmentViewModel = viewModel()) {
                         modifier = Modifier.padding(8.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        // --- WYŚWIETLANIE ZDJĘCIA (bez zmian) ---
                         if (item.imagePath != null) {
                             val file = File(context.filesDir, item.imagePath)
                             if (file.exists()) {
@@ -205,7 +191,6 @@ fun HistoryScreen(vm: EnvironmentViewModel = viewModel()) {
                             }
                         }
 
-                        // --- DANE TEKSTOWE (bez zmian) ---
                         Column(modifier = Modifier.weight(1f)) {
                             Text(
                                 "Hałas: ${"%.1f".format(item.decibels)} dB",
@@ -227,7 +212,6 @@ fun HistoryScreen(vm: EnvironmentViewModel = viewModel()) {
                             )
                         }
 
-                        // --- PRZYCISK USUWANIA (bez zmian) ---
                         IconButton(onClick = {
                             vm.deleteMeasurement(item)
                             (measurementsState as MutableState).value =
