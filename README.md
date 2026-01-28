@@ -25,7 +25,12 @@ Zgodnie z wymaganiami projektu, aplikacja wykorzystuje 3 źródła danych:
 * **Uprawnienia:** Pełna obsługa systemowych uprawnień Runtime (Camera, Location, Audio).
 
 ## 📸 Zrzuty ekranu
-Znajdują się 
+
+### Ekran główny (Dashboard)
+![Dashboard](screenshots/dashboard.png)
+
+### Historia pomiarów
+![Historia](screenshots/history.png)
 
 ## 🚀 Instrukcja uruchomienia
 1. Sklonuj repozytorium.
