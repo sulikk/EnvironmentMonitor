@@ -100,7 +100,6 @@ fun DashboardScreen(
         Text("Monitor Środowiskowy", style = MaterialTheme.typography.headlineMedium)
         Spacer(Modifier.height(32.dp))
 
-        // Wyświetlanie danych
         Text("Poziom hałasu: ${"%.2f".format(uiState.currentDb)} dB", style = MaterialTheme.typography.titleLarge)
         Text("Lat: ${uiState.latitude}", style = MaterialTheme.typography.bodyMedium)
         Text("Lon: ${uiState.longitude}", style = MaterialTheme.typography.bodyMedium)
@@ -204,7 +203,6 @@ fun HistoryScreen(vm: EnvironmentViewModel = viewModel()) {
                                 "Data: ${java.util.Date(item.timestamp)}",
                                 style = MaterialTheme.typography.bodySmall
                             )
-                            // Dodatkowa wskazówka dla użytkownika
                             Text(
                                 "Kliknij, aby zobaczyć mapę",
                                 style = MaterialTheme.typography.labelSmall,
