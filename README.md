@@ -42,4 +42,4 @@ Gotowy plik instalacyjny znajduje się w folderze `release`.
 ![Historia](screenshots/history.png)
 
 ---
-*Projekt zrealizowany w ramach laboratorium: Programowanie urządzeń mobilnych.*
+*Projekt zrealizowany w ramach laboratorium: Programowanie aplikacji mobilnych.*
