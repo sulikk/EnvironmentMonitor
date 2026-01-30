@@ -26,7 +26,7 @@ Zgodnie z wymaganiami projektu, aplikacja wykorzystuje 3 źródła danych:
 
 ## 🚀 Instrukcja uruchomienia
 1. Sklonuj repozytorium.
-2. Otwórz projekt w **Android Studio (Ladybug lub nowsza)**.
+2. Otwórz projekt w **Android Studio**.
 3. Uruchom aplikację na fizycznym urządzeniu lub emulatorze.
 4. Zaakceptuj wymagane uprawnienia przy pierwszym uruchomieniu, aby sensory mogły zbierać dane.
 
@@ -42,4 +42,4 @@ Gotowy plik instalacyjny znajduje się w folderze `release`.
 ![Historia](screenshots/history.png)
 
 ---
-*Projekt zrealizowany w ramach laboratorium: Programowanie urządzeń mobilnych.*
+*Projekt zrealizowany w ramach laboratorium: Programowanie aplikacji mobilnych.*
